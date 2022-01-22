@@ -1,0 +1,9 @@
+[user]
+	name = Joshua Oertel
+	email = 16182568+joshwashywash@users.noreply.github.com
+[alias]
+	plog = log --graph --decorate --oneline
+	ac = "!git add -A && git commit -m"
+	prune = git remote update --prune && git branch -vv | awk '/: gone]/{print }' | xargs git branch -d
+[init]
+	defaultBranch = main
