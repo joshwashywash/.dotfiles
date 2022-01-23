@@ -7,3 +7,5 @@
 	prune = git remote update --prune && git branch -vv | awk '/: gone]/{print }' | xargs git branch -d
 [init]
 	defaultBranch = main
+[pull]
+	rebase = false
