@@ -1,0 +1,133 @@
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+  augroup end
+]])
+
+local plugins = {
+  { 'wbthomason/packer.nvim' },
+  { 'neovim/nvim-lspconfig' },
+  {
+    'kyazdani42/nvim-tree.lua',
+    config = {
+      function()
+        require('josh.nvim-tree')
+      end,
+    },
+    requires = {
+      'kyazdani42/nvim-web-devicons',
+      opt = true,
+    },
+  },
+  {
+    'folke/which-key.nvim',
+    config = function()
+      require('josh.which-key')
+    end,
+  },
+  {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+    config = function()
+      require('josh.treesitter')
+    end,
+  },
+  {
+    'williamboman/nvim-lsp-installer',
+    config = function()
+      require('josh.lsp-installer')
+    end,
+  },
+  { 'hrsh7th/cmp-nvim-lsp' },
+  { 'hrsh7th/cmp-buffer' },
+  { 'hrsh7th/cmp-path' },
+  { 'hrsh7th/cmp-cmdline' },
+  {
+    'hrsh7th/nvim-cmp',
+    config = function()
+      require('josh.cmp')
+    end,
+  },
+  { 'hrsh7th/cmp-vsnip' },
+  { 'hrsh7th/vim-vsnip' },
+  {
+    'nvim-telescope/telescope.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+    },
+    config = function()
+      require('josh.telescope')
+    end,
+  },
+  {
+    'akinsho/bufferline.nvim',
+    requires = {
+      'kyazdani42/nvim-web-devicons',
+      opt = true,
+    },
+    config = function()
+      require('josh.bufferline')
+    end,
+  },
+  {
+    'nvim-lualine/lualine.nvim',
+    requires = {
+      'kyazdani42/nvim-web-devicons',
+      opt = true,
+    },
+    config = function()
+      require('josh.lualine')
+    end,
+  },
+  { 'onsails/lspkind-nvim' },
+  {
+    'windwp/nvim-autopairs',
+    config = function()
+      require('josh.autopairs')
+    end,
+  },
+  { 'folke/lsp-colors.nvim' },
+  {
+    'folke/trouble.nvim',
+    config = function()
+      require('josh.trouble')
+    end,
+    requires = 'kyazdani42/nvim-web-devicons',
+  },
+  {
+    'akinsho/toggleterm.nvim',
+    config = function()
+      require('josh.toggleterm')
+    end,
+  },
+  {
+    'jose-elias-alvarez/null-ls.nvim',
+    config = function()
+      require('josh.null-ls')
+    end,
+  },
+  { 'b0o/schemastore.nvim' },
+  {
+    'dracula/vim',
+    as = 'dracula',
+    config = function()
+      require('josh.colorscheme')
+    end,
+  },
+}
+
+return require('packer').startup({
+  function(use)
+    for _, plugin in ipairs(plugins) do
+      use(plugin)
+    end
+  end,
+  config = {
+    display = {
+      open_fn = function()
+        return require('packer.util').float({ border = 'rounded' })
+      end,
+    },
+  },
+})
