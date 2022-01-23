@@ -3,11 +3,11 @@ local tree_cb = require('nvim-tree.config').nvim_tree_callback
 -- key -> nvim function name
 local keymaps = {
   { '..', 'dir_up' },
-  { '<BS>', 'close_node' },
-  { '<C-c>', 'cd' },
-  { '<C-r>', 'refresh' },
-  { '<C-y>', 'copy_absolute_path' },
-  { '<CR>', 'edit' },
+  { '<bs>', 'close_node' },
+  { '<c-c>', 'cd' },
+  { '<c-r>', 'refresh' },
+  { '<c-y>', 'copy_absolute_path' },
+  { '<cr>', 'edit' },
   { '?', 'toggle_help' },
   { 'D', 'trash' },
   { 'F', 'first_sibling' },
