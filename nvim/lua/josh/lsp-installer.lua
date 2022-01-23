@@ -15,6 +15,7 @@ if ok then
   end
 
   local function on_attach(client, bufnr)
+    client.resolved_capabilities.document_formatting = false -- let null ls handle formatting
     if client.resolved_capabilities.document_highlight then
       vim.cmd([[
         augroup lsp_document_highlight
