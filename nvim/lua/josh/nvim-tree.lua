@@ -1,5 +1,3 @@
-local tree_cb = require('nvim-tree.config').nvim_tree_callback
-
 -- key -> nvim function name
 local keymaps = {
   { '..', 'dir_up' },
@@ -28,20 +26,24 @@ local keymaps = {
   { 'y', 'copy_name' },
 }
 
-local function create_entry(keymap)
-  local key, cb_name = unpack(keymap)
-  return { key = key, cb = tree_cb(cb_name) }
+local function create_keymap(keymap)
+  local key, action = unpack(keymap)
+  return { key = key, action = action }
 end
 
-for i, keymap in ipairs(keymaps) do
-  keymaps[i] = create_entry(keymap)
+local function map(f, tbl)
+  local t = {}
+  for k, v in pairs(tbl) do
+    t[k] = f(v)
+  end
+  return t
 end
 
 require('nvim-tree').setup({
   view = {
     mappings = {
       custom_only = true,
-      list = keymaps,
+      list = map(create_keymap, keymaps),
     },
     width = 24,
   },
