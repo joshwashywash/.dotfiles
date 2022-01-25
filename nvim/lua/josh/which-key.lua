@@ -5,10 +5,14 @@ local function cc(command)
 end
 
 if ok then
-  wk.setup()
+  wk.setup({
+    triggers_blacklist = {
+      i = { 't', 'n' },
+    },
+  })
   wk.register({
     F = { cc('lua vim.lsp.buf.formatting_sync()'), 'format' },
-    c = { cc(':bd'), 'close' },
+    c = { cc(':bdelete!'), 'close buffer' },
     e = { cc('NvimTreeToggle'), 'explorer' },
     f = {
       name = 'find',
@@ -18,6 +22,7 @@ if ok then
       h = { cc('Telescope help_tags'), 'help' },
       r = { cc('Telescope oldfiles'), 'recent files' },
     },
+    h = { cc('nohl'), 'no highlight' },
     l = {
       name = 'lsp',
       I = { cc('LspInstallInfo'), 'install info' },
