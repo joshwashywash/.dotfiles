@@ -1,4 +1,4 @@
-local colorscheme = 'dracula'
+local colorscheme = 'melange'
 
 local ok, _ = pcall(vim.cmd, string.format('colorscheme %s', colorscheme))
 
