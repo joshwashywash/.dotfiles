@@ -26,7 +26,11 @@ if ok then
       y = { cc('TroubleToggle lsp_type_definitions'), 'type definitions' },
     },
     c = { cc(':bdelete!'), 'close buffer' },
-    e = { cc('NvimTreeToggle'), 'explorer' },
+    e = {
+      name = 'explorer',
+      e = { cc('NvimTreeToggle'), 'toggle' },
+      f = { cc('NvimTreeFindFile'), 'find file' },
+    },
     f = { cc('lua vim.lsp.buf.formatting_sync()'), 'format' },
     t = {
       name = 'telescope',
