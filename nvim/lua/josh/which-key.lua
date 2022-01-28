@@ -17,6 +17,7 @@ if ok then
     f = {
       name = 'find',
       b = { cc('Telescope buffers'), 'buffers' },
+      c = { cc('Telescope lsp_code_actions'), 'code actions' },
       f = { cc('Telescope find_files'), 'files' },
       g = { cc('Telescope live_grep'), 'grep' },
       h = { cc('Telescope help_tags'), 'help' },
