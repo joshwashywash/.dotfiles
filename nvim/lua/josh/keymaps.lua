@@ -23,8 +23,8 @@ local common_keymaps = {
 local normal_mode_keymaps = {
   -- resize window
   { '<c-down>', ':resize -2<cr>' },
-  { '<c-right>', ':vertical resize -2<cr>' },
-  { '<c-left>', ':vertical resize +2<cr>' },
+  { '<c-left>', ':vertical resize -2<cr>' },
+  { '<c-right>', ':vertical resize +2<cr>' },
   { '<c-up>', ':resize +2<cr>' },
 
   -- navigate windows
