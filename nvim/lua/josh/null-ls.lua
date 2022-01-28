@@ -13,11 +13,13 @@ if ok then
       end
     end,
     sources = {
-      null_ls.builtins.formatting.stylua,
+      null_ls.builtins.code_actions.gitsigns,
+      null_ls.builtins.diagnostics.php,
+      null_ls.builtins.formatting.phpcsfixer,
       null_ls.builtins.formatting.prettier.with({
         extra_filetypes = { 'svelte', 'toml' },
       }),
-      null_ls.builtins.diagnostics.php,
+      null_ls.builtins.formatting.stylua,
     },
   })
 end
