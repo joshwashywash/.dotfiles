@@ -124,13 +124,27 @@ local plugins = {
       require('josh.null-ls')
     end,
   },
+  {
+    'lewis6991/gitsigns.nvim',
+    config = {
+      require('gitsigns').setup(),
+    },
+    requires = {
+      'nvim-lua/plenary.nvim',
+    },
+  },
   { 'b0o/schemastore.nvim' },
   {
     'dracula/vim',
     as = 'dracula',
-    config = function()
-      require('josh.colorscheme')
-    end,
+  },
+  {
+    'savq/melange',
+    as = 'melange',
+  },
+  {
+    'catppuccin/nvim',
+    as = 'catppuccin',
   },
 }
 
