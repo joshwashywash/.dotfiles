@@ -1,5 +1,6 @@
 local files = {
   'autocommands',
+  'colorscheme',
   'keymaps',
   'options',
   'plugins',
