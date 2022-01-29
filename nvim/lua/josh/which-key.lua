@@ -11,29 +11,15 @@ if ok then
     },
   })
   wk.register({
-    T = {
-      name = 'trouble',
-      D = { cc('TroubleToggle document_diagnostics'), 'document diagnostics' },
-      d = { cc('TroubleToggle lsp_definitions'), 'definitions' },
-      l = { cc('TroubleToggle loclist'), 'loclist' },
-      q = { cc('TroubleToggle quickfix'), 'quickfix' },
-      r = { cc('TroubleToggle lsp_references'), 'lsp references' },
-      t = { cc('TroubleToggle'), 'toggle' },
-      w = {
-        cc('TroubleToggle workspace_diagnostics'),
-        'workspace diagnostics',
-      },
-      y = { cc('TroubleToggle lsp_type_definitions'), 'type definitions' },
-    },
     c = { cc(':bdelete!'), 'close buffer' },
     e = {
       name = 'explorer',
       e = { cc('NvimTreeToggle'), 'toggle' },
       f = { cc('NvimTreeFindFile'), 'find file' },
     },
-    f = { cc('lua vim.lsp.buf.formatting_sync()'), 'format' },
-    t = {
-      name = 'telescope',
+    F = { cc('lua vim.lsp.buf.formatting_sync()'), 'format' },
+    f = {
+      name = 'find',
       D = { cc('Telescope diagnostics'), 'diagnostics' },
       R = { cc('Telescope lsp_references'), 'references' },
       b = { cc('Telescope buffers'), 'buffers' },
@@ -45,7 +31,6 @@ if ok then
       r = { cc('Telescope oldfiles'), 'recent files' },
       t = { cc('Telescope lsp_type_definitions'), 'type definitions' },
     },
-    h = { cc('nohl'), 'no highlight' },
     g = {
       name = 'git',
       B = { cc('Telescope git_branches'), 'branches' },
@@ -65,6 +50,7 @@ if ok then
       s = { cc('Telescope git_status'), 'status' },
       t = { cc('Telescope git_stash'), 'stash' },
     },
+    h = { cc('nohl'), 'no highlight' },
     l = {
       name = 'lsp',
       I = { cc('LspInstallInfo'), 'install info' },
@@ -79,6 +65,20 @@ if ok then
       u = { cc('PackerUpdate'), 'update' },
     },
     q = { cc('q'), 'quit' },
+    t = {
+      name = 'trouble',
+      D = { cc('TroubleToggle document_diagnostics'), 'document diagnostics' },
+      d = { cc('TroubleToggle lsp_definitions'), 'definitions' },
+      l = { cc('TroubleToggle loclist'), 'loclist' },
+      q = { cc('TroubleToggle quickfix'), 'quickfix' },
+      r = { cc('TroubleToggle lsp_references'), 'lsp references' },
+      t = { cc('TroubleToggle'), 'toggle' },
+      w = {
+        cc('TroubleToggle workspace_diagnostics'),
+        'workspace diagnostics',
+      },
+      y = { cc('TroubleToggle lsp_type_definitions'), 'type definitions' },
+    },
     w = { cc('w'), 'write file' },
   }, { prefix = '<leader>' })
 end
