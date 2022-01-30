@@ -1,23 +1,10 @@
 vim.g.mapleader = ' '
 
 local common_keymaps = {
-  { 'F', 'H' }, -- up to top
-  { 'H', 'J' }, -- join line below
-  { 'J', 'T' }, -- just before backewards
-  { 'K', 'R' }, -- replace mode
-  { 'L', 'F' }, -- locate back
-  { 'R', '^' }, -- move to start of line
-  { 'S', 'L' }, -- down to bottom
-  { 'T', '$' }, -- move to end of line
-  { 'Y', 'y$' }, -- yank to end of line
-  { 'f', 'k' }, -- up
-  { 'h', 'K' }, -- show help
-  { 'j', 't' }, -- just before
-  { 'k', 'r' }, -- replace
-  { 'l', 'f' }, -- locate
-  { 'r', 'h' }, -- left
-  { 's', 'j' }, -- down
-  { 't', 'l' }, -- right
+  { 'Y', 'y$' },
+  { 'h', 'k' },
+  { 'j', 'h' },
+  { 'k', 'j' },
 }
 
 local normal_mode_keymaps = {
@@ -28,20 +15,20 @@ local normal_mode_keymaps = {
   { '<c-up>', ':resize +2<cr>' },
 
   -- navigate windows
-  { '<c-f>', '<c-w>k' },
-  { '<c-r>', '<c-w>h' },
-  { '<c-s>', '<c-w>j' },
-  { '<c-t>', '<c-w>l' },
+  { '<c-h>', '<c-w>k' },
+  { '<c-j>', '<c-w>h' },
+  { '<c-k>', '<c-w>j' },
+  { '<c-l>', '<c-w>l' },
 
   -- move text up and down
-  { '<a-s>', ':m .+1<cr>==' },
-  { '<a-f>', ':m .-2<cr>==' },
+  { '<a-h>', ':m .-2<cr>==' },
+  { '<a-k>', ':m .+1<cr>==' },
 }
 
 local visual_mode_keymaps = {
   -- move text up and down
-  { '<a-f>', ':m \'<-2<cr>gv=gv' },
-  { '<a-s>', ':m \'>+1<cr>gv=gv' },
+  { '<a-h>', ':m \'<-2<cr>gv=gv' },
+  { '<a-k>', ':m \'>+1<cr>gv=gv' },
 
   { 'p', '"_dP' },
 
@@ -51,10 +38,6 @@ local visual_mode_keymaps = {
   -- keep selection on indent
   { '<', '<gv' },
   { '>', '>gv' },
-}
-
-local insert_mode_keymaps = {
-  { 'tn', '<esc>' },
 }
 
 local operator_mode_keymaps = {}
@@ -73,7 +56,6 @@ for _, keymap in ipairs({
 end
 
 local maps = {
-  i = insert_mode_keymaps,
   n = normal_mode_keymaps,
   o = operator_mode_keymaps,
   v = visual_mode_keymaps,

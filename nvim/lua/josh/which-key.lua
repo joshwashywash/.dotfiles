@@ -5,11 +5,6 @@ local function cc(command)
 end
 
 if ok then
-  wk.setup({
-    triggers_blacklist = {
-      i = { 't', 'n' },
-    },
-  })
   wk.register({
     c = { cc(':bdelete!'), 'close buffer' },
     e = {
@@ -39,7 +34,7 @@ if ok then
       H = { cc('Gitsigns undo_stage_hunk'), 'undo stage hunk' },
       P = { cc('Gitsigns preview_hunk'), 'preview hunk' },
       R = { cc('Gitsigns reset_buffer'), 'reset buffer' },
-      S = { cc('Gitsigns stage_buffer'), 'stage buffer' },
+      s = { cc('Gitsigns stage_buffer'), 'stage buffer' },
       b = { cc('Gitsigns blame_line'), 'blame' },
       c = { cc('Telescope git_commits'), 'commits' },
       d = { cc('Gitsigns toggle_deleted'), 'toggle deleted' },
@@ -47,7 +42,7 @@ if ok then
       n = { cc('Gitsigns next_hunk'), 'next hunk' },
       p = { cc('Gitsigns prev_hunk'), 'previous hunk' },
       r = { cc('Gitsigns reset_hunk'), 'reset hunk' },
-      s = { cc('Telescope git_status'), 'status' },
+      S = { cc('Telescope git_status'), 'status' },
       t = { cc('Telescope git_stash'), 'stash' },
     },
     h = { cc('nohl'), 'no highlight' },

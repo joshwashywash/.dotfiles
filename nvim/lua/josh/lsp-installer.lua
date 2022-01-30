@@ -28,7 +28,7 @@ if ok then
     vim.api.nvim_buf_set_keymap(
       bufnr,
       'n',
-      'h',
+      'K',
       '<cmd>lua vim.lsp.buf.hover()<cr>',
       { noremap = true, silent = true }
     )
