@@ -11,7 +11,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
     'https://github.com/wbthomason/packer.nvim',
     install_path,
   })
-  vim.notify('Installing packer close and reopen Neovim...')
+  vim.notify('Installing packer. Close and reopen Neovim...')
   vim.cmd([[packadd packer.nvim]])
 end
 
@@ -133,6 +133,12 @@ local plugins = {
       'nvim-lua/plenary.nvim',
     },
   },
+  {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup()
+    end,
+  },
   { 'b0o/schemastore.nvim' },
   {
     'dracula/vim',
@@ -141,10 +147,6 @@ local plugins = {
   {
     'savq/melange',
     as = 'melange',
-  },
-  {
-    'catppuccin/nvim',
-    as = 'catppuccin',
   },
 }
 
