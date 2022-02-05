@@ -8,11 +8,6 @@ local common_keymaps = {
 }
 
 local normal_mode_keymaps = {
-  -- resize window
-  { '<c-down>', ':resize -2<cr>' },
-  { '<c-left>', ':vertical resize -2<cr>' },
-  { '<c-right>', ':vertical resize +2<cr>' },
-  { '<c-up>', ':resize +2<cr>' },
 
   -- navigate windows
   { '<c-h>', '<c-w>k' },
@@ -55,7 +50,10 @@ for _, keymap in ipairs({
   extend(keymap, common_keymaps)
 end
 
+local insert_mode_keymaps = {}
+
 local maps = {
+  i = insert_mode_keymaps,
   n = normal_mode_keymaps,
   o = operator_mode_keymaps,
   v = visual_mode_keymaps,
