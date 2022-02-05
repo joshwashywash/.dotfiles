@@ -14,7 +14,33 @@ if ok then
     return orig_floating_preview(contents, syntax, opts, ...)
   end
 
+  local function cc(command)
+    return string.format('<cmd>%s<cr>', command)
+  end
+
+  local keymaps = {
+    { '<c-k>', 'lua vim.lsp.buf.signature_help()' },
+    { 'K', 'lua vim.lsp.buf.hover()' },
+    { 'gD', 'lua vim.lsp.buf.declaration()' },
+    { 'gca', 'lua vim.lsp.buf.code_action()' },
+    { 'gd', 'lua vim.lsp.buf.definition()' },
+    { 'gr', 'lua vim.lsp.buf.references()' },
+    { 'gt', 'lua vim.lsp.buf.type_definition()' },
+    { 'rn', 'lua vim.lsp.buf.rename()' },
+  }
+
   local function on_attach(client, bufnr)
+    for _, keymap in ipairs(keymaps) do
+      local from, to = unpack(keymap)
+      vim.api.nvim_buf_set_keymap(
+        bufnr,
+        'n',
+        from,
+        cc(to),
+        { noremap = true, silent = true }
+      )
+    end
+
     client.resolved_capabilities.document_formatting = false -- let null ls handle formatting
     if client.resolved_capabilities.document_highlight then
       vim.cmd([[
@@ -25,13 +51,6 @@ if ok then
         augroup END
       ]])
     end
-    vim.api.nvim_buf_set_keymap(
-      bufnr,
-      'n',
-      'K',
-      '<cmd>lua vim.lsp.buf.hover()<cr>',
-      { noremap = true, silent = true }
-    )
   end
 
   local capabilities = require('cmp_nvim_lsp').update_capabilities(
