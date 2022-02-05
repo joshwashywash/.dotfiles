@@ -139,7 +139,12 @@ local plugins = {
       require('Comment').setup()
     end,
   },
-  { 'b0o/schemastore.nvim' },
+  { 'b0o/schemastore.nvim', ft = 'json' },
+  {
+    'iamcco/markdown-preview.nvim',
+    run = 'cd app && npm install',
+    ft = 'markdown',
+  },
   {
     'dracula/vim',
     as = 'dracula',
