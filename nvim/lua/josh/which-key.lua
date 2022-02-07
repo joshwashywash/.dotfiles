@@ -66,7 +66,7 @@ if ok then
       d = { cc('TroubleToggle lsp_definitions'), 'definitions' },
       l = { cc('TroubleToggle loclist'), 'loclist' },
       q = { cc('TroubleToggle quickfix'), 'quickfix' },
-      r = { cc('TroubleToggle lsp_references'), 'lsp references' },
+      r = { cc('TroubleToggle lsp_references'), 'references' },
       t = { cc('TroubleToggle'), 'toggle' },
       w = {
         cc('TroubleToggle workspace_diagnostics'),
