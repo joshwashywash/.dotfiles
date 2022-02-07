@@ -26,7 +26,7 @@ if ok then
     { 'gd', 'lua vim.lsp.buf.definition()' },
     { 'gr', 'lua vim.lsp.buf.references()' },
     { 'gt', 'lua vim.lsp.buf.type_definition()' },
-    { 'rn', 'lua vim.lsp.buf.rename()' },
+    { 'Rn', 'lua vim.lsp.buf.rename()' },
   }
 
   local function on_attach(client, bufnr)
