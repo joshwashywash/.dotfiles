@@ -147,6 +147,12 @@ local plugins = {
   },
   { 'rktjmp/lush.nvim', cmd = { 'LushRunQuickstart', 'LushRunTutorial' } },
   {
+    'norcalli/nvim-colorizer.lua',
+    config = function()
+      require('colorizer').setup()
+    end,
+  },
+  {
     'dracula/vim',
     as = 'dracula',
   },
