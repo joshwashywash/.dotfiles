@@ -19,14 +19,14 @@ if ok then
   end
 
   local keymaps = {
-    { '<c-k>', 'lua vim.lsp.buf.signature_help()' },
     { 'K', 'lua vim.lsp.buf.hover()' },
+    { 'Rn', 'lua vim.lsp.buf.rename()' },
     { 'gD', 'lua vim.lsp.buf.declaration()' },
+    { 'gK', 'lua vim.lsp.buf.signature_help()' },
     { 'gca', 'lua vim.lsp.buf.code_action()' },
     { 'gd', 'lua vim.lsp.buf.definition()' },
     { 'gr', 'lua vim.lsp.buf.references()' },
     { 'gt', 'lua vim.lsp.buf.type_definition()' },
-    { 'Rn', 'lua vim.lsp.buf.rename()' },
   }
 
   local function on_attach(client, bufnr)
