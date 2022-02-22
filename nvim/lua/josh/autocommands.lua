@@ -7,3 +7,14 @@ vim.api.nvim_exec(
   ]],
   false
 )
+
+vim.api.nvim_exec(
+  [[
+    augroup markdown
+      autocmd!
+      autocmd FileType markdown setlocal wrap
+      autocmd FileType markdown setlocal spell
+    augroup end
+  ]],
+  false
+)
