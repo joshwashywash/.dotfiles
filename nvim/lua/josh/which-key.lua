@@ -45,7 +45,7 @@ if ok then
       s = { cc('Gitsigns stage_buffer'), 'stage buffer' },
       t = { cc('Telescope git_stash'), 'stash' },
     },
-    h = { cc('nohl'), 'no highlight' },
+    h = { cc('set hls!'), 'toggle highlight' },
     l = {
       name = 'lsp',
       I = { cc('LspInstallInfo'), 'install info' },
