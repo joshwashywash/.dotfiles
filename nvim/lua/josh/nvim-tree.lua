@@ -2,7 +2,7 @@
 local keymaps = {
   { '..', 'dir_up' },
   { '<bs>', 'close_node' },
-  { '<c-d>', 'cd' },
+  { '<a-d>', 'cd' },
   { '<c-h>', 'toggle_dotfiles' }, -- hidden
   { '<c-r>', 'refresh' },
   { '<c-y>', 'copy_absolute_path' },
