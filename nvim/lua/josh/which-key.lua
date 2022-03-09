@@ -6,7 +6,7 @@ end
 
 if ok then
   wk.register({
-    c = { cc(':bdelete!'), 'close buffer' },
+    c = { cc(':bd'), 'close buffer' },
     e = {
       name = 'explorer',
       e = { cc('NvimTreeToggle'), 'toggle' },
