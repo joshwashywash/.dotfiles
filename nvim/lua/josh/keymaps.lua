@@ -5,6 +5,8 @@ local common_keymaps = {
   { 'h', 'k' },
   { 'j', 'h' },
   { 'k', 'j' },
+  { '\'', '`' },
+  { '`', '\'' },
 }
 
 local normal_mode_keymaps = {
