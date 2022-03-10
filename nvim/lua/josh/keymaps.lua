@@ -2,11 +2,11 @@ vim.g.mapleader = ' '
 
 local common_keymaps = {
   { 'Y', 'y$' },
+  { '\'', '`' },
+  { '`', '\'' },
   { 'h', 'k' },
   { 'j', 'h' },
   { 'k', 'j' },
-  { '\'', '`' },
-  { '`', '\'' },
 }
 
 local normal_mode_keymaps = {
