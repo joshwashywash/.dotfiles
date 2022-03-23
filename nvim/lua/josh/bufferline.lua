@@ -15,8 +15,8 @@ if ok then
   })
   --navigate buffers
   local keymaps = {
-    { '<s-tab>', ':BufferLineCyclePrev<cr>' },
-    { '<tab>', ':BufferLineCycleNext<cr>' },
+    { 'gT', ':BufferLineCyclePrev<cr>' },
+    { 'gt', ':BufferLineCycleNext<cr>' },
   }
 
   for _, keymap in ipairs(keymaps) do
