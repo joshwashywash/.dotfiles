@@ -166,6 +166,9 @@ local plugins = {
     'savq/melange',
     as = 'melange',
   },
+  {
+    'tpope/vim-surround',
+  },
 }
 
 return require('packer').startup({
