@@ -50,6 +50,7 @@ require('nvim-tree').setup({
       custom_only = true,
       list = map(create_keymap, keymaps),
     },
+    side = 'right',
     width = 24,
   },
 })
