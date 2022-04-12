@@ -23,6 +23,22 @@ vim.cmd([[
 ]])
 
 local plugins = {
+  {
+    'akinsho/toggleterm.nvim',
+    config = function()
+      require('josh.toggleterm')
+    end,
+  },
+  {
+    'akinsho/bufferline.nvim',
+    requires = {
+      'kyazdani42/nvim-web-devicons',
+      opt = true,
+    },
+    config = function()
+      require('josh.bufferline')
+    end,
+  },
   { 'wbthomason/packer.nvim' },
   { 'neovim/nvim-lspconfig' },
   {
@@ -78,16 +94,6 @@ local plugins = {
     end,
   },
   {
-    'akinsho/bufferline.nvim',
-    requires = {
-      'kyazdani42/nvim-web-devicons',
-      opt = true,
-    },
-    config = function()
-      require('josh.bufferline')
-    end,
-  },
-  {
     'nvim-lualine/lualine.nvim',
     requires = {
       'kyazdani42/nvim-web-devicons',
@@ -111,12 +117,6 @@ local plugins = {
       require('josh.trouble')
     end,
     requires = 'kyazdani42/nvim-web-devicons',
-  },
-  {
-    'akinsho/toggleterm.nvim',
-    config = function()
-      require('josh.toggleterm')
-    end,
   },
   {
     'jose-elias-alvarez/null-ls.nvim',
@@ -145,7 +145,6 @@ local plugins = {
     run = 'cd app && npm install',
     ft = 'markdown',
   },
-  { 'rktjmp/lush.nvim', cmd = { 'LushRunQuickstart', 'LushRunTutorial' } },
   {
     'norcalli/nvim-colorizer.lua',
     config = function()
@@ -167,7 +166,7 @@ local plugins = {
     as = 'melange',
   },
   {
-    'tpope/vim-surround',
+    'machakann/vim-sandwich',
   },
 }
 

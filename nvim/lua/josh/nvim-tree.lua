@@ -1,14 +1,13 @@
 -- key -> nvim function name
 local keymaps = {
   { '..', 'dir_up' },
-  { '<bs>', 'close_node' },
   { '<a-d>', 'cd' },
+  { '<bs>', 'close_node' },
   { '<c-h>', 'toggle_dotfiles' }, -- hidden
   { '<c-r>', 'refresh' },
   { '<c-y>', 'copy_absolute_path' },
   { '<cr>', 'edit' },
   { '<tab>', 'preview' },
-  { '?', 'toggle_help' },
   { 'D', 'trash' },
   { 'H', 'first_sibling' },
   { 'I', 'toggle_ignored' },
@@ -19,6 +18,7 @@ local keymaps = {
   { 'a', 'create' },
   { 'c', 'copy' },
   { 'd', 'remove' },
+  { 'g?', 'toggle_help' },
   { 'gn', 'next_git_item' },
   { 'gp', 'prev_git_item' },
   { 'o', 'system_open' },
@@ -45,6 +45,12 @@ local function map(f, tbl)
 end
 
 require('nvim-tree').setup({
+  actions = {
+    open_file = {
+      quit_on_open = true,
+    },
+  },
+  hide_root_folder = true,
   view = {
     mappings = {
       custom_only = true,

@@ -1,6 +1,7 @@
 vim.g.mapleader = ' '
 
 local common_keymaps = {
+  { 'U', '<c-r>' },
   { 'Y', 'y$' },
   { '\'', '`' },
   { '`', '\'' },
