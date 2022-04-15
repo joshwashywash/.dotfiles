@@ -54,7 +54,7 @@ if ok then
         else
           fallback() -- The fallback function sends an already mapped key. In this case, it's probably `<Tab>`.
         end
-      end, { 'i', 's' }),
+      end, { 'c', 'i', 's' }),
       ['<c-p>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_prev_item()
@@ -63,7 +63,7 @@ if ok then
         else
           fallback()
         end
-      end, { 'i', 's' }),
+      end, { 'c', 'i', 's' }),
     },
     snippet = {
       -- REQUIRED - you must specify a snippet engine
