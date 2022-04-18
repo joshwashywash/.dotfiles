@@ -30,6 +30,7 @@ if ok then
   }
 
   local function on_attach(client, bufnr)
+    client.offset_encoding = 'utf-16' -- null-ls does not allow multiple encodings and defaults to utf-16
     for _, keymap in ipairs(keymaps) do
       local from, to = unpack(keymap)
       vim.api.nvim_buf_set_keymap(
@@ -63,13 +64,15 @@ if ok then
       on_attach = on_attach,
     }
 
-    local _ok, settings = pcall(
+    local _ok, _opts = pcall(
       require,
       string.format('josh.langservers.%s', server.name)
     )
 
     if _ok then
-      opts.settings = settings
+      for k, v in pairs(_opts) do
+        opts[k] = v
+      end
     end
 
     server:setup(opts)

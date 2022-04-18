@@ -23,6 +23,7 @@ vim.cmd([[
 ]])
 
 local plugins = {
+  { 'wbthomason/packer.nvim' },
   {
     'akinsho/toggleterm.nvim',
     config = function()
@@ -39,7 +40,6 @@ local plugins = {
       require('josh.bufferline')
     end,
   },
-  { 'wbthomason/packer.nvim' },
   { 'neovim/nvim-lspconfig' },
   {
     'kyazdani42/nvim-tree.lua',
