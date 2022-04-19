@@ -6,6 +6,8 @@
 [init]
 	defaultBranch = main
 [pull]
-	rebase = false
+	rebase = true
 [fetch]
 	prune = true
+[credential]
+	helper = store
