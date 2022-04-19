@@ -4,7 +4,7 @@ if ok then
   return {
     settings = {
       json = {
-        schemas = schemastore.json.schemas,
+        schemas = schemastore.json.schemas(),
       },
     },
   }
