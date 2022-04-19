@@ -3,13 +3,6 @@ local ok, cmp = pcall(require, 'cmp')
 if ok then
   local lspkind = require('lspkind')
 
-  vim.g.completeopt = {
-    'menu',
-    'menuone',
-    'noinsert',
-    'noselect',
-  }
-
   local has_words_before = function()
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
     return col ~= 0
@@ -27,6 +20,8 @@ if ok then
     )
   end
 
+  local offset = 4
+
   cmp.setup({
     formatting = {
       format = lspkind.cmp_format({
@@ -35,15 +30,11 @@ if ok then
       }),
     },
     mapping = {
-      ['<c-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-      ['<c-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-      ['<c-space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-      ['<c-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-      ['<c-e>'] = cmp.mapping({
-        i = cmp.mapping.abort(),
-        c = cmp.mapping.close(),
-      }),
-      ['<cr>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+      ['<c-b>'] = cmp.mapping.scroll_docs(-offset),
+      ['<c-f>'] = cmp.mapping.scroll_docs(offset),
+      ['<c-space>'] = cmp.mapping.complete(),
+      ['<c-e>'] = cmp.mapping.abort(),
+      ['<cr>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
       ['<c-n>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
@@ -81,6 +72,7 @@ if ok then
 
   -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
   cmp.setup.cmdline('/', {
+    mapping = cmp.mapping.preset.cmdline(),
     sources = {
       { name = 'buffer' },
     },
@@ -88,6 +80,7 @@ if ok then
 
   -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
   cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
       { name = 'path' },
     }, {

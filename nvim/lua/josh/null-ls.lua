@@ -21,6 +21,7 @@ if ok then
         extra_filetypes = { 'svelte', 'toml' },
       }),
       null_ls.builtins.formatting.stylua,
+      null_ls.builtins.formatting.clang_format,
     },
   })
 end

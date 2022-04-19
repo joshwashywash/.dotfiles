@@ -20,10 +20,9 @@ if ok then
   }
 
   function _G.set_terminal_keymaps()
-    local opts = { noremap = true }
     for _, keymap in ipairs(keymaps) do
       local from, to = unpack(keymap)
-      vim.api.nvim_buf_set_keymap(0, 't', from, to, opts)
+      vim.keymap.set('t', from, to, { noremap = true })
     end
   end
 

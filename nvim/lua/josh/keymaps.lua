@@ -65,7 +65,7 @@ local maps = {
 local function map_keys(mode, keymaps, opts)
   for _, keymap in ipairs(keymaps) do
     local from, to = unpack(keymap)
-    vim.api.nvim_set_keymap(mode, from, to, opts)
+    vim.keymap.set(mode, from, to, opts)
   end
 end
 

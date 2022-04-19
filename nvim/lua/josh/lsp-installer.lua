@@ -14,33 +14,24 @@ if ok then
     return orig_floating_preview(contents, syntax, opts, ...)
   end
 
-  local function cc(command)
-    return string.format('<cmd>%s<cr>', command)
-  end
-
   local keymaps = {
-    { 'K', 'lua vim.lsp.buf.hover()' },
-    { 'Rn', 'lua vim.lsp.buf.rename()' },
-    { 'gD', 'lua vim.lsp.buf.declaration()' },
-    { 'gK', 'lua vim.lsp.buf.signature_help()' },
-    { 'gca', 'lua vim.lsp.buf.code_action()' },
-    { 'gd', 'lua vim.lsp.buf.definition()' },
-    { 'gr', 'lua vim.lsp.buf.references()' },
-    { 'gy', 'lua vim.lsp.buf.type_definition()' },
+    { 'K', vim.lsp.buf.hover },
+    { 'Rn', vim.lsp.buf.rename },
+    { 'gD', vim.lsp.buf.declaration },
+    { 'gK', vim.lsp.buf.signature_help },
+    { 'gca', vim.lsp.buf.code_action },
+    { 'gd', vim.lsp.buf.definition },
+    { 'gr', vim.lsp.buf.references },
+    { 'gy', vim.lsp.buf.type_definition },
   }
+
+  for _, keymap in ipairs(keymaps) do
+    local from, to = unpack(keymap)
+    vim.keymap.set('n', from, to, { noremap = true, silent = true })
+  end
 
   local function on_attach(client, bufnr)
     client.offset_encoding = 'utf-16' -- null-ls does not allow multiple encodings and defaults to utf-16
-    for _, keymap in ipairs(keymaps) do
-      local from, to = unpack(keymap)
-      vim.api.nvim_buf_set_keymap(
-        bufnr,
-        'n',
-        from,
-        cc(to),
-        { noremap = true, silent = true }
-      )
-    end
 
     client.resolved_capabilities.document_formatting = false -- let null ls handle formatting
     if client.resolved_capabilities.document_highlight then
