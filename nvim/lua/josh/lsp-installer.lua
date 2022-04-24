@@ -14,22 +14,19 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
 end
 
 local keymaps = {
-  { 'K', vim.lsp.buf.hover },
-  { 'Rn', vim.lsp.buf.rename },
-  { 'gD', vim.lsp.buf.declaration },
-  { 'gK', vim.lsp.buf.signature_help },
-  { 'gca', vim.lsp.buf.code_action },
-  { 'gd', vim.lsp.buf.definition },
-  { 'gr', vim.lsp.buf.references },
-  { 'gy', vim.lsp.buf.type_definition },
+  K = vim.lsp.buf.hover,
+  Rn = vim.lsp.buf.rename,
+  gD = vim.lsp.buf.declaration,
+  gK = vim.lsp.buf.signture_help,
+  gc = vim.lsp.buf.code_action,
+  gd = vim.lsp.buf.definition,
+  gr = vim.lsp.buf.references,
+  gy = vim.lsp.buf.type_definition,
 }
 
-local set_key = function(keymap)
-  local from, to = unpack(keymap)
-  vim.keymap.set('n', from, to)
+for k, v in pairs(keymaps) do
+  vim.keymap.set('n', k, v)
 end
-
-vim.tbl_map(set_key, keymaps)
 
 local function on_attach(client, bufnr)
   client.offset_encoding = 'utf-16' -- null-ls does not allow multiple encodings and defaults to utf-16
