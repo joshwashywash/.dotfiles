@@ -10,6 +10,8 @@ local common_keymaps = {
   { 'k', 'j' },
 }
 
+local insert_mode_keymaps = {}
+
 local normal_mode_keymaps = {
 
   -- navigate windows
@@ -22,6 +24,8 @@ local normal_mode_keymaps = {
   { '<a-h>', ':m .-2<cr>==' },
   { '<a-k>', ':m .+1<cr>==' },
 }
+
+local operator_mode_keymaps = {}
 
 local visual_mode_keymaps = {
   -- move text up and down
@@ -38,22 +42,13 @@ local visual_mode_keymaps = {
   { '>', '>gv' },
 }
 
-local operator_mode_keymaps = {}
-
--- extend a with b
-local function extend(a, b)
-  table.move(b, 1, #b, #a + 1, a)
-end
-
 for _, keymap in ipairs({
   normal_mode_keymaps,
   operator_mode_keymaps,
   visual_mode_keymaps,
 }) do
-  extend(keymap, common_keymaps)
+  vim.list_extend(keymap, common_keymaps)
 end
-
-local insert_mode_keymaps = {}
 
 local maps = {
   i = insert_mode_keymaps,

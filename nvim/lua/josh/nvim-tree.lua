@@ -1,3 +1,5 @@
+local nvimtree = require('nvim-tree')
+
 -- key -> nvim function name
 local keymaps = {
   { '..', 'dir_up' },
@@ -36,15 +38,7 @@ local function create_keymap(keymap)
   return { key = key, action = action }
 end
 
-local function map(f, tbl)
-  local t = {}
-  for k, v in pairs(tbl) do
-    t[k] = f(v)
-  end
-  return t
-end
-
-require('nvim-tree').setup({
+nvimtree.setup({
   actions = {
     open_file = {
       quit_on_open = true,
@@ -54,7 +48,7 @@ require('nvim-tree').setup({
   view = {
     mappings = {
       custom_only = true,
-      list = map(create_keymap, keymaps),
+      list = vim.tbl_map(create_keymap, keymaps),
     },
     side = 'right',
     width = 24,

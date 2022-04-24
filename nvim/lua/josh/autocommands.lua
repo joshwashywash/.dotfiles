@@ -1,4 +1,4 @@
-vim.api.nvim_exec(
+vim.cmd(
   [[
     augroup highlight_yank
       autocmd!
@@ -8,7 +8,7 @@ vim.api.nvim_exec(
   false
 )
 
-vim.api.nvim_exec(
+vim.cmd(
   [[
     augroup markdown
       autocmd!

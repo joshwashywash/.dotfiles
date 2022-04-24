@@ -1,13 +1,7 @@
-local ok, schemastore = pcall(require, 'schemastore')
-
-if ok then
-  return {
-    settings = {
-      json = {
-        schemas = schemastore.json.schemas(),
-      },
+return {
+  settings = {
+    json = {
+      schemas = require('schemastore').json.schemas(),
     },
-  }
-else
-  return {}
-end
+  },
+}

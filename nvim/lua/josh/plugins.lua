@@ -1,9 +1,10 @@
-local fn = vim.fn
+local packer = require('packer')
 
 -- Automatically install packer
-local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-  PACKER_BOOTSTRAP = fn.system({
+local install_path = vim.fn.stdpath('data')
+  .. '/site/pack/packer/start/packer.nvim'
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+  PACKER_BOOTSTRAP = vim.fn.system({
     'git',
     'clone',
     '--depth',
@@ -14,13 +15,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
   vim.notify('Installing packer. Close and reopen Neovim...')
   vim.cmd([[packadd packer.nvim]])
 end
-
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-  augroup end
-]])
 
 local plugins = {
   { 'wbthomason/packer.nvim' },
@@ -101,7 +95,7 @@ local plugins = {
   {
     'windwp/nvim-autopairs',
     config = function()
-      require('josh.autopairs')
+      require('nvim-autopairs').setup()
     end,
   },
   { 'folke/lsp-colors.nvim' },
@@ -164,19 +158,20 @@ local plugins = {
   {
     'savq/melange',
     as = 'melange',
+    config = function()
+      vim.cmd('colorscheme melange')
+    end,
   },
-  {
-    'machakann/vim-sandwich',
-  },
+  { 'machakann/vim-sandwich' },
 }
 
-return require('packer').startup({
-  function(use)
+return packer.startup({
+  function()
     for _, plugin in ipairs(plugins) do
-      use(plugin)
+      packer.use(plugin)
     end
     if PACKER_BOOTSTRAP then
-      require('packer').sync()
+      packer.sync()
     end
   end,
   config = {
