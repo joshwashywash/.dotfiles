@@ -1,12 +1,19 @@
-vim.cmd(
-  [[
-    augroup highlight_yank
-      autocmd!
-      au TextYankPost * silent! lua vim.highlight.on_yank({higroup="IncSearch", timeout=250})
-    augroup end
-  ]],
-  false
-)
+local cmds = {
+  TextYankPost = {
+    callback = function()
+      vim.highlight.on_yank({ higroup = 'IncSearch', timeout = 200 })
+    end,
+  },
+  VimResized = {
+    callback = function()
+      vim.cmd('tabo wincmd =')
+    end,
+  },
+}
+
+for k, v in pairs(cmds) do
+  vim.api.nvim_create_autocmd(k, v)
+end
 
 vim.cmd(
   [[

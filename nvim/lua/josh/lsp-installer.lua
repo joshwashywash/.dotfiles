@@ -26,7 +26,7 @@ local keymaps = {
 
 local set_key = function(keymap)
   local from, to = unpack(keymap)
-  vim.keymap.set('n', from, to, { noremap = true, silent = true })
+  vim.keymap.set('n', from, to)
 end
 
 vim.tbl_map(set_key, keymaps)
@@ -64,8 +64,6 @@ lsp_installer.on_server_ready(function(server)
   if _ok then
     opts = vim.tbl_extend('keep', opts, extra_opts)
   end
-
-  vim.notify(server.name)
 
   server:setup(opts)
 end)

@@ -30,5 +30,5 @@ local keymaps = {
 
 for _, keymap in ipairs(keymaps) do
   local from, to = unpack(keymap)
-  vim.keymap.set('n', from, to, { noremap = true, silent = true })
+  vim.keymap.set('n', from, to)
 end

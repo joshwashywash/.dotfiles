@@ -21,7 +21,7 @@ local keymaps = {
 function _G.set_terminal_keymaps()
   for _, keymap in ipairs(keymaps) do
     local from, to = unpack(keymap)
-    vim.keymap.set('t', from, to, { noremap = true })
+    vim.keymap.set('t', from, to)
   end
 end
 

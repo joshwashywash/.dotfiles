@@ -65,5 +65,5 @@ local function map_keys(mode, keymaps, opts)
 end
 
 for mode, keymaps in pairs(maps) do
-  map_keys(mode, keymaps, { noremap = true, silent = true })
+  map_keys(mode, keymaps)
 end
