@@ -4,12 +4,9 @@ if ok then
   null_ls.setup({
     on_attach = function(client)
       if client.resolved_capabilities.document_formatting then
-        vim.cmd([[
-          augroup LspFormatting
-            autocmd! * <buffer>
-            autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
-          augroup END
-        ]])
+        vim.api.nvim_create_autocmd('BufWritePre', {
+          callback = vim.lsp.buf.formatting_sync,
+        })
       end
     end,
     sources = {

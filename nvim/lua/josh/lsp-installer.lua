@@ -33,13 +33,14 @@ local function on_attach(client, bufnr)
 
   client.resolved_capabilities.document_formatting = false -- let null ls handle formatting
   if client.resolved_capabilities.document_highlight then
-    vim.cmd([[
-        augroup lsp_document_highlight
-          autocmd! * <buffer>
-          autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-          autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-        augroup END
-      ]])
+    for k, v in pairs({
+      CursorHold = vim.lsp.buf.document_highlight,
+      CursorMoved = vim.lsp.buf.clear_references,
+    }) do
+      vim.api.nvim_create_autocmd(k, {
+        callback = v,
+      })
+    end
   end
 end
 
