@@ -1,7 +1,7 @@
 local cmds = {
   TextYankPost = {
     callback = function()
-      vim.highlight.on_yank({ higroup = 'IncSearch', timeout = 200 })
+      vim.highlight.on_yank({ higroup = 'Visual', timeout = 200 })
     end,
   },
   FileType = {
