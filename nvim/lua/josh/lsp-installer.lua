@@ -39,6 +39,7 @@ local function on_attach(client, bufnr)
     }) do
       vim.api.nvim_create_autocmd(k, {
         callback = v,
+        buffer = bufnr,
       })
     end
   end
