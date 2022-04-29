@@ -44,8 +44,8 @@ nvimtree.setup({
       quit_on_open = true,
     },
   },
-  hide_root_folder = true,
   view = {
+    hide_root_folder = true,
     mappings = {
       custom_only = true,
       list = vim.tbl_map(create_keymap, keymaps),
