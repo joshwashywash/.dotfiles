@@ -1,10 +1,10 @@
-local packer = require('packer')
-
 -- Automatically install packer
-local install_path = vim.fn.stdpath('data')
-  .. '/site/pack/packer/start/packer.nvim'
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  PACKER_BOOTSTRAP = vim.fn.system({
+local packer_bootstrap = false
+local fn = vim.fn
+
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+if fn.empty(fn.glob(install_path)) > 0 then
+  packer_bootstrap = fn.system({
     'git',
     'clone',
     '--depth',
@@ -12,12 +12,21 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
     'https://github.com/wbthomason/packer.nvim',
     install_path,
   })
-  vim.notify('Installing packer. Close and reopen Neovim...')
-  vim.cmd([[packadd packer.nvim]])
 end
+
+local packer = require('packer')
 
 local plugins = {
   { 'wbthomason/packer.nvim' },
+  {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require('gitsigns').setup()
+    end,
+    requires = {
+      'nvim-lua/plenary.nvim',
+    },
+  },
   {
     'akinsho/toggleterm.nvim',
     config = function()
@@ -37,11 +46,9 @@ local plugins = {
   { 'neovim/nvim-lspconfig' },
   {
     'kyazdani42/nvim-tree.lua',
-    config = {
-      function()
-        require('josh.nvim-tree')
-      end,
-    },
+    config = function()
+      require('josh.nvim-tree')
+    end,
     requires = {
       'kyazdani42/nvim-web-devicons',
       opt = true,
@@ -113,15 +120,6 @@ local plugins = {
     end,
   },
   {
-    'lewis6991/gitsigns.nvim',
-    config = {
-      require('gitsigns').setup(),
-    },
-    requires = {
-      'nvim-lua/plenary.nvim',
-    },
-  },
-  {
     'numToStr/Comment.nvim',
     config = function()
       require('Comment').setup()
@@ -170,7 +168,7 @@ return packer.startup({
     for _, plugin in ipairs(plugins) do
       packer.use(plugin)
     end
-    if PACKER_BOOTSTRAP then
+    if packer_bootstrap then
       packer.sync()
     end
   end,
