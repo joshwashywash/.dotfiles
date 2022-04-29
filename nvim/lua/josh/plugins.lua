@@ -14,8 +14,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
   })
 end
 
-local packer = require('packer')
-
 local plugins = {
   { 'wbthomason/packer.nvim' },
   {
@@ -162,6 +160,8 @@ local plugins = {
   },
   { 'machakann/vim-sandwich' },
 }
+
+local packer = require('packer')
 
 return packer.startup({
   function()
