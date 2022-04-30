@@ -149,6 +149,10 @@ local plugins = {
     end,
   },
   {
+    'catppuccin/nvim',
+    as = 'catppuccin',
+  },
+  {
     'dracula/vim',
     as = 'dracula',
   },
