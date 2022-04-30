@@ -116,6 +116,7 @@ local plugins = {
     config = function()
       require('josh.null-ls')
     end,
+    requires = { 'nvim-lua/plenary.nvim' },
   },
   {
     'numToStr/Comment.nvim',
