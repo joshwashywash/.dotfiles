@@ -1,10 +1,10 @@
 local cmds = {
-  TextYankPost = {
+  ['TextYankPost'] = {
     callback = function()
       vim.highlight.on_yank({ higroup = 'Visual', timeout = 200 })
     end,
   },
-  FileType = {
+  ['FileType'] = {
     callback = function()
       for _, v in pairs({ 'wrap', 'spell' }) do
         vim.opt_local[v] = true

@@ -14,21 +14,14 @@ bufferline.setup({
 
 --navigate buffers
 local keymaps = {
-  {
-    'gT',
-    function()
-      bufferline.cycle(-1)
-    end,
-  },
-  {
-    'gt',
-    function()
-      bufferline.cycle(1)
-    end,
-  },
+  ['gT'] = function()
+    bufferline.cycle(-1)
+  end,
+  ['gt'] = function()
+    bufferline.cycle(1)
+  end,
 }
 
-for _, keymap in ipairs(keymaps) do
-  local from, to = unpack(keymap)
-  vim.keymap.set('n', from, to)
+for k, v in pairs(keymaps) do
+  vim.keymap.set('n', k, v)
 end
