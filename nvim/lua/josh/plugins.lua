@@ -103,6 +103,12 @@ local plugins = {
       require('nvim-autopairs').setup()
     end,
   },
+  {
+    'windwp/nvim-ts-autotag',
+    config = function()
+      require('nvim-ts-autotag').setup()
+    end,
+  },
   { 'folke/lsp-colors.nvim' },
   {
     'folke/trouble.nvim',
@@ -125,11 +131,6 @@ local plugins = {
     end,
   },
   { 'b0o/schemastore.nvim' },
-  {
-    'iamcco/markdown-preview.nvim',
-    run = 'cd app && npm install',
-    ft = 'markdown',
-  },
   {
     'norcalli/nvim-colorizer.lua',
     config = function()
