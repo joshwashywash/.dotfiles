@@ -1,4 +1,8 @@
-local lsp_installer = require('nvim-lsp-installer')
+local lsp_signature = require('lsp_signature')
+local lspinstaller = require('nvim-lsp-installer')
+lspinstaller.setup()
+
+local lspconfig = require('lspconfig')
 
 vim.diagnostic.config({
   severity_sort = true,
@@ -24,34 +28,26 @@ local keymaps = {
   gy = vim.lsp.buf.type_definition,
 }
 
-for k, v in pairs(keymaps) do
-  vim.keymap.set('n', k, v)
-end
-
 local function on_attach(client, bufnr)
-  client.offset_encoding = 'utf-16' -- null-ls does not allow multiple encodings and defaults to utf-16
+  -- 0.8 use the new lsp.buffer filter api
+  client.resolved_capabilities.document_formatting = false -- 0.7 and earlier
+  require('illuminate').on_attach(client)
 
-  client.resolved_capabilities.document_formatting = false -- let null ls handle formatting
-  if client.resolved_capabilities.document_highlight then
-    for k, v in pairs({
-      CursorHold = vim.lsp.buf.document_highlight,
-      CursorMoved = vim.lsp.buf.clear_references,
-    }) do
-      vim.api.nvim_create_autocmd(k, {
-        callback = v,
-        buffer = bufnr,
-      })
-    end
+  lsp_signature.on_attach({
+    bind = true,
+    handler_opts = { border = 'rounded' },
+  }, bufnr)
+
+  for k, v in pairs(keymaps) do
+    vim.keymap.set('n', k, v, { buffer = bufnr })
   end
 end
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(
-  vim.lsp.protocol.make_client_capabilities()
-)
-
-lsp_installer.on_server_ready(function(server)
+for _, server in ipairs(lspinstaller.get_installed_servers()) do
   local opts = {
-    capabilities = capabilities,
+    capabilities = require('cmp_nvim_lsp').update_capabilities(
+      vim.lsp.protocol.make_client_capabilities()
+    ),
     on_attach = on_attach,
   }
 
@@ -59,10 +55,8 @@ lsp_installer.on_server_ready(function(server)
     require,
     string.format('josh.langservers.%s', server.name)
   )
-
   if _ok then
     opts = vim.tbl_extend('keep', opts, extra_opts)
   end
-
-  server:setup(opts)
-end)
+  lspconfig[server.name].setup(opts)
+end

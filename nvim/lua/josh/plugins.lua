@@ -41,7 +41,6 @@ local plugins = {
       require('josh.bufferline')
     end,
   },
-  { 'neovim/nvim-lspconfig' },
   {
     'kyazdani42/nvim-tree.lua',
     config = function()
@@ -59,11 +58,15 @@ local plugins = {
       require('josh.treesitter')
     end,
   },
+  { 'ray-x/lsp_signature.nvim' },
   {
     'williamboman/nvim-lsp-installer',
-    config = function()
-      require('josh.lsp-installer')
-    end,
+    {
+      'neovim/nvim-lspconfig',
+      config = function()
+        require('josh.lsp-installer')
+      end,
+    },
   },
   { 'hrsh7th/cmp-nvim-lsp' },
   { 'hrsh7th/cmp-buffer' },
@@ -165,6 +168,7 @@ local plugins = {
     end,
   },
   { 'machakann/vim-sandwich' },
+  { 'RRethy/vim-illuminate' },
 }
 
 local packer = require('packer')
