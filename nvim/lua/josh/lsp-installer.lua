@@ -28,9 +28,13 @@ local keymaps = {
   gy = vim.lsp.buf.type_definition,
 }
 
+local disable_clients = { 'svelte', 'sumneko_lua' }
+
 local function on_attach(client, bufnr)
   -- 0.8 use the new lsp.buffer filter api
-  client.resolved_capabilities.document_formatting = false -- 0.7 and earlier
+  if vim.tbl_contains(disable_clients, client.name) then
+    client.resolved_capabilities.document_formatting = false -- 0.7 and earlier
+  end
   require('illuminate').on_attach(client)
 
   lsp_signature.on_attach({
