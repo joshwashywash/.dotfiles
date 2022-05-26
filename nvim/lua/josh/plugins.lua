@@ -167,7 +167,6 @@ local plugins = {
       vim.cmd('colorscheme melange')
     end,
   },
-  { 'machakann/vim-sandwich' },
   { 'RRethy/vim-illuminate' },
 }
 
