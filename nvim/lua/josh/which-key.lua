@@ -8,6 +8,12 @@ local wk = require('which-key')
 
 wk.register({
   F = { vim.lsp.buf.formatting_sync, 'format' },
+  H = {
+    function()
+      vim.cmd('set hls!')
+    end,
+    'toggle highlight',
+  },
   c = {
     function()
       vim.cmd('bd')
@@ -59,12 +65,6 @@ wk.register({
     r = { gitsigns.reset_hunk, 'reset hunk' },
     s = { gitsigns.stage_buffer, 'stage buffer' },
     t = { telescope.git_stash, 'stash' },
-  },
-  h = {
-    function()
-      vim.cmd('set hls!')
-    end,
-    'toggle highlight',
   },
   l = {
     name = 'lsp',
