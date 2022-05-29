@@ -1,3 +1,4 @@
+local bufdelete = require('bufdelete')
 local gitsigns = require('gitsigns.actions')
 local lsp_installer = require('nvim-lsp-installer')
 local nvimtree = require('nvim-tree')
@@ -14,11 +15,20 @@ wk.register({
     end,
     'toggle highlight',
   },
-  c = {
-    function()
-      vim.cmd('bd')
-    end,
-    'close buffer',
+  b = {
+    name = 'buffer actions',
+    d = {
+      function()
+        bufdelete.bufdelete(0)
+      end,
+      'delete',
+    },
+    w = {
+      function()
+        bufdelete.wipeout(0)
+      end,
+      'wipeout',
+    },
   },
   e = {
     name = 'explorer',
@@ -76,12 +86,6 @@ wk.register({
     S = { packer.status, 'status' },
     s = { packer.sync, 'sync' },
   },
-  q = {
-    function()
-      vim.cmd('q')
-    end,
-    'quit',
-  },
   t = {
     name = 'trouble',
     D = {
@@ -127,11 +131,5 @@ wk.register({
       end,
       'type definitions',
     },
-  },
-  w = {
-    function()
-      vim.cmd('w')
-    end,
-    'write file',
   },
 }, { prefix = '<leader>' })

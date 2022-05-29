@@ -174,6 +174,9 @@ local plugins = {
       require('impatient')
     end,
   },
+  {
+    'famiu/bufdelete.nvim',
+  },
 }
 
 local packer = require('packer')
