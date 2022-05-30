@@ -28,7 +28,12 @@ local keymaps = {
   gy = vim.lsp.buf.type_definition,
 }
 
-local disable_clients = { 'svelte', 'sumneko_lua' }
+local disable_formatting_clients = {
+  'ccls',
+  'sumneko_lua',
+  'svelte',
+  'tsserver',
+}
 
 local function on_attach(client, bufnr)
   -- 0.8 use the new lsp.buffer filter api
