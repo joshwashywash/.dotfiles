@@ -32,6 +32,7 @@ local keymaps = {
 
 local disable_formatting_clients = {
   'ccls',
+  'html',
   'jsonls',
   'sumneko_lua',
   'svelte',
