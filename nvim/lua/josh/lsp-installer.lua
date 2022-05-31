@@ -1,5 +1,7 @@
 local lsp_signature = require('lsp_signature')
 local lspinstaller = require('nvim-lsp-installer')
+local illuminate = require('illuminate')
+
 lspinstaller.setup()
 
 local lspconfig = require('lspconfig')
@@ -30,17 +32,21 @@ local keymaps = {
 
 local disable_formatting_clients = {
   'ccls',
+  'jsonls',
   'sumneko_lua',
   'svelte',
   'tsserver',
 }
 
 local function on_attach(client, bufnr)
+  client.offset_encoding = 'utf-16'
+
   -- 0.8 use the new lsp.buffer filter api
-  if vim.tbl_contains(disable_clients, client.name) then
+  if vim.tbl_contains(disable_formatting_clients, client.name) then
     client.resolved_capabilities.document_formatting = false -- 0.7 and earlier
   end
-  require('illuminate').on_attach(client)
+
+  illuminate.on_attach(client)
 
   lsp_signature.on_attach({
     bind = true,
