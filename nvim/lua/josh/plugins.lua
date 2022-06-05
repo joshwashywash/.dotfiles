@@ -156,17 +156,6 @@ local plugins = {
     'catppuccin/nvim',
     as = 'catppuccin',
   },
-  {
-    'dracula/vim',
-    as = 'dracula',
-  },
-  {
-    'savq/melange',
-    as = 'melange',
-    config = function()
-      vim.cmd('colorscheme melange')
-    end,
-  },
   { 'RRethy/vim-illuminate' },
   {
     'lewis6991/impatient.nvim',
@@ -176,6 +165,14 @@ local plugins = {
   },
   {
     'famiu/bufdelete.nvim',
+  },
+  {
+    'rose-pine/neovim',
+    as = 'rose-pine',
+    config = function()
+      require('rose-pine').setup({ dark_variant = 'moon' })
+      vim.cmd('colorscheme rose-pine')
+    end,
   },
 }
 
