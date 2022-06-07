@@ -24,6 +24,6 @@ null_ls.setup({
       extra_filetypes = { 'svelte', 'toml' },
     }),
     null_ls.builtins.formatting.stylua,
-    -- null_ls.builtins.formatting.clang_format,
+    null_ls.builtins.formatting.clang_format,
   },
 })
