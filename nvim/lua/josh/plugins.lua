@@ -58,7 +58,10 @@ local plugins = {
       require('josh.treesitter')
     end,
   },
-  { 'ray-x/lsp_signature.nvim' },
+  {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+  },
+  -- { 'ray-x/lsp_signature.nvim' },
   {
     'williamboman/nvim-lsp-installer',
     {

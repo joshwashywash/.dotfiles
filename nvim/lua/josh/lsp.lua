@@ -1,4 +1,3 @@
-local lsp_signature = require('lsp_signature')
 local lspinstaller = require('nvim-lsp-installer')
 local illuminate = require('illuminate')
 
@@ -41,11 +40,6 @@ local function on_attach(client, bufnr)
   end
 
   illuminate.on_attach(client)
-
-  lsp_signature.on_attach({
-    bind = true,
-    handler_opts = { border = 'rounded' },
-  }, bufnr)
 
   for k, v in pairs(keymaps) do
     vim.keymap.set('n', k, v, { buffer = bufnr })
