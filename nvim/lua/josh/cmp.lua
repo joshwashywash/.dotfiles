@@ -1,5 +1,6 @@
 local cmp = require('cmp')
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+local luasnip = require('luasnip')
 local lspkind = require('lspkind')
 
 local offset = 4
@@ -7,8 +8,11 @@ local offset = 4
 cmp.setup({
   formatting = {
     format = lspkind.cmp_format({
-      with_text = false,
-      maxwidth = 50,
+      before = function(_, vim_item)
+        return vim_item
+      end,
+      maxwidth = 64,
+      mode = 'symbol',
     }),
   },
   mapping = cmp.mapping.preset.insert({
@@ -19,17 +23,14 @@ cmp.setup({
     ['<cr>'] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
   }),
   snippet = {
-    -- REQUIRED - you must specify a snippet engine
     expand = function(args)
-      vim.fn['vsnip#anonymous'](args.body) -- For `vsnip` users.
+      luasnip.lsp_expand(args.body)
     end,
   },
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    { name = 'vsnip' },
-  }, {
-    { name = 'buffer' },
-  }),
+    { name = 'luasnip' },
+  }, { { name = 'buffer' } }),
 })
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).

@@ -61,13 +61,18 @@ local plugins = {
   {
     'nvim-treesitter/nvim-treesitter-textobjects',
   },
-  -- { 'ray-x/lsp_signature.nvim' },
+  {
+    'ray-x/lsp_signature.nvim',
+    config = function()
+      require('lsp_signature').setup()
+    end,
+  },
   {
     'williamboman/nvim-lsp-installer',
     {
       'neovim/nvim-lspconfig',
       config = function()
-        require('josh.lsp-installer')
+        require('josh.lsp')
       end,
     },
   },
@@ -81,8 +86,8 @@ local plugins = {
       require('josh.cmp')
     end,
   },
-  { 'hrsh7th/cmp-vsnip' },
-  { 'hrsh7th/vim-vsnip' },
+  { 'saadparwaiz1/cmp_luasnip' },
+  { 'L3MON4D3/LuaSnip' },
   {
     'nvim-telescope/telescope.nvim',
     requires = {
