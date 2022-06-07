@@ -12,13 +12,6 @@ vim.diagnostic.config({
   virtual_text = false,
 })
 
-local orig_floating_preview = vim.lsp.util.open_floating_preview
-function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-  opts = opts or {}
-  opts.border = 'rounded'
-  return orig_floating_preview(contents, syntax, opts, ...)
-end
-
 local keymaps = {
   K = vim.lsp.buf.hover,
   Rn = vim.lsp.buf.rename,
