@@ -1,9 +1,7 @@
 local opts = {
   background = 'dark',
   clipboard = 'unnamedplus',
-  cursorline = true,
-  expandtab = true,
-  fileencoding = 'utf-8',
+  completeopt = { 'menuone', 'noselect' },
   guifont = 'monospace:h16',
   hidden = true,
   ignorecase = true,
@@ -18,12 +16,12 @@ local opts = {
   smartcase = true,
   smartindent = true,
   splitbelow = true,
+  splitright = true,
   swapfile = false,
   tabstop = 2,
   termguicolors = true,
   timeoutlen = 500,
-  updatetime = 300,
-  wrap = false,
+  updatetime = 250,
   writebackup = false,
 }
 
