@@ -53,10 +53,10 @@ local plugins = {
   },
   {
     'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate',
     config = function()
       require('josh.treesitter')
     end,
+    run = ':TSUpdate',
   },
   {
     'nvim-treesitter/nvim-treesitter-textobjects',
