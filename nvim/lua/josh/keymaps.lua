@@ -1,4 +1,5 @@
 vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
 local common_keymaps = {
   { 'U', '<c-r>' },

@@ -13,6 +13,7 @@ local opts = {
   shiftwidth = 2,
   showmode = false,
   showtabline = 2,
+  signcolumn = 'yes',
   smartcase = true,
   smartindent = true,
   splitbelow = true,
