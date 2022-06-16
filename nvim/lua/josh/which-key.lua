@@ -26,7 +26,7 @@ wk.register({
     },
     w = {
       function()
-        bufdelete.wipeout(0)
+        bufdelete.bufwipeout(0)
       end,
       'wipeout',
     },
