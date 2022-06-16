@@ -64,13 +64,7 @@ wk.register({
     C = { telescope.git_bcommits, 'buffer commits' },
     D = { gitsigns.diffthis, 'diff' },
     H = { gitsigns.undo_stage_hunk, 'undo stage hunk' },
-    N = {
-      function()
-        neogit.refresh_manually()
-        neogit.open()
-      end,
-      'neogit',
-    },
+    N = { neogit.open, 'neogit' },
     P = { gitsigns.preview_hunk, 'preview hunk' },
     R = { gitsigns.reset_buffer, 'reset buffer' },
     S = { telescope.git_status, 'status' },
