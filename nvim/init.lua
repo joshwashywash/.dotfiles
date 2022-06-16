@@ -1,3 +1,5 @@
+require('impatient')
+
 local files = {
   'autocommands',
   'keymaps',
