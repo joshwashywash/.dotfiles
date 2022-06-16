@@ -172,9 +172,6 @@ local plugins = {
   { 'RRethy/vim-illuminate' },
   {
     'lewis6991/impatient.nvim',
-    config = function()
-      require('impatient')
-    end,
   },
   {
     'famiu/bufdelete.nvim',
