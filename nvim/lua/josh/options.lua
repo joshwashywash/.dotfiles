@@ -23,6 +23,7 @@ local opts = {
   termguicolors = true,
   timeoutlen = 500,
   updatetime = 250,
+  wrap = false,
   writebackup = false,
 }
 

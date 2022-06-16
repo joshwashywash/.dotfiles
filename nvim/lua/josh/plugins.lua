@@ -1,18 +1,21 @@
 -- Automatically install packer
-local packer_bootstrap = false
-local fn = vim.fn
+local packer = require('packer')
 
-local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({
-    'git',
-    'clone',
-    '--depth',
-    '1',
-    'https://github.com/wbthomason/packer.nvim',
-    install_path,
-  })
-end
+-- local packer_bootstrap = false
+
+-- local fn = vim.fn
+
+-- local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+-- if fn.empty(fn.glob(install_path)) > 0 then
+--   packer_bootstrap = fn.system({
+--     'git',
+--     'clone',
+--     '--depth',
+--     '1',
+--     'https://github.com/wbthomason/packer.nvim',
+--     install_path,
+--   })
+-- end
 
 local plugins = {
   { 'wbthomason/packer.nvim' },
@@ -185,18 +188,18 @@ local plugins = {
       vim.cmd('colorscheme rose-pine')
     end,
   },
+  { 'machakann/vim-sandwich' },
 }
-
-local packer = require('packer')
 
 return packer.startup({
   function()
     for _, plugin in ipairs(plugins) do
       packer.use(plugin)
     end
-    if packer_bootstrap then
-      packer.sync()
-    end
+    packer.sync()
+    -- if packer_bootstrap then
+    --   packer.sync()
+    -- end
   end,
   config = {
     display = {

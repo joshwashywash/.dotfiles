@@ -24,6 +24,7 @@ local keymaps = {
 
 local disable_formatting_clients = {
   'ccls',
+  'emmet_ls',
   'html',
   'jsonls',
   'sumneko_lua',
