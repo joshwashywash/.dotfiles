@@ -53,6 +53,5 @@ nvimtree.setup({
       list = vim.tbl_map(create_keymap, keymaps),
     },
     side = 'right',
-    width = 32,
   },
 })
