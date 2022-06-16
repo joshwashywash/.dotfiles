@@ -1,6 +1,7 @@
 local bufdelete = require('bufdelete')
 local gitsigns = require('gitsigns.actions')
 local lsp_installer = require('nvim-lsp-installer')
+local neogit = require('neogit')
 local nvimtree = require('nvim-tree')
 local packer = require('packer')
 local telescope = require('telescope.builtin')
@@ -63,6 +64,13 @@ wk.register({
     C = { telescope.git_bcommits, 'buffer commits' },
     D = { gitsigns.diffthis, 'diff' },
     H = { gitsigns.undo_stage_hunk, 'undo stage hunk' },
+    N = {
+      function()
+        neogit.refresh_manually()
+        neogit.open()
+      end,
+      'neogit',
+    },
     P = { gitsigns.preview_hunk, 'preview hunk' },
     R = { gitsigns.reset_buffer, 'reset buffer' },
     S = { telescope.git_status, 'status' },
