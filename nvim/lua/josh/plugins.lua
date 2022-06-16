@@ -176,13 +176,7 @@ local plugins = {
   {
     'famiu/bufdelete.nvim',
   },
-  {
-    'TimUntersberger/neogit',
-    requires = 'nvim-lua/plenary.nvim',
-    config = function()
-      require('neogit').setup()
-    end,
-  },
+  { 'tpope/vim-fugitive' },
   {
     'rose-pine/neovim',
     as = 'rose-pine',
