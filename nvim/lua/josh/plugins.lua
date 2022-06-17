@@ -199,7 +199,7 @@ return packer.startup({
     for _, plugin in ipairs(plugins) do
       packer.use(plugin)
     end
-    packer.sync()
+    packer.update()
     -- if packer_bootstrap then
     --   packer.sync()
     -- end
