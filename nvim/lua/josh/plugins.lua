@@ -192,6 +192,14 @@ local plugins = {
     end,
   },
   { 'machakann/vim-sandwich' },
+  {
+    'iamcco/markdown-preview.nvim',
+    ft = { 'markdown' },
+    run = 'cd app && npm install',
+    setup = function()
+      vim.g.mkdp_filetypes = { 'markdown' }
+    end,
+  },
 }
 
 return packer.startup({
