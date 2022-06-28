@@ -8,14 +8,6 @@ local telescope = require('telescope.builtin')
 local trouble = require('trouble')
 local wk = require('which-key')
 
-local function map_over_buffers(fn)
-  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-    if vim.api.nvim_buf_is_loaded(buf) then
-      fn(buf)
-    end
-  end
-end
-
 wk.register({
   F = { vim.lsp.buf.formatting_sync, 'format' },
   H = {
@@ -34,7 +26,7 @@ wk.register({
     },
     D = {
       function()
-        map_over_buffers(bufdelete.bufdelete)
+        vim.cmd('%bdelete')
       end,
       'delete all buffers',
     },
@@ -46,7 +38,7 @@ wk.register({
     },
     W = {
       function()
-        map_over_buffers(bufdelete.wipeout)
+        vim.cmd('%bwipeout')
       end,
       'wipeout all buffers',
     },
