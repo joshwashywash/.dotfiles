@@ -141,6 +141,18 @@ wk.register({
       end,
       'loclist',
     },
+    n = {
+      function()
+        trouble.next({ skip_group = true, jump = true })
+      end,
+      'next ',
+    },
+    p = {
+      function()
+        trouble.previous({ skip_group = true, jump = true })
+      end,
+      'previous',
+    },
     q = {
       function()
         trouble.toggle('quickfix')

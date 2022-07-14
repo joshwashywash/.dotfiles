@@ -2,6 +2,7 @@ local nvimtree = require('nvim-tree')
 
 -- key -> nvim function name
 local keymaps = {
+  { '$', 'toggle_file_info' },
   { '..', 'dir_up' },
   { './', 'cd' },
   { '<bs>', 'close_node' },
@@ -14,7 +15,6 @@ local keymaps = {
   { 'D', 'trash' },
   { 'E', 'expand_all' },
   { 'I', 'toggle_ignored' },
-  { 'K', 'toggle_file_info' },
   { 'P', 'parent_node' },
   { 'R', 'full_rename' },
   { 'Y', 'copy_path' },
