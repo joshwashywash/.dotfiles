@@ -2,9 +2,14 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 local common_keymaps = {
+  { '$', 'K' },
+  { 'J', '^' },
+  { 'K', 'L' },
+  { 'L', '$' },
   { 'U', '<c-r>' },
   { 'Y', 'y$' },
   { '\'', '`' },
+  { '^', 'J' },
   { '`', '\'' },
   { 'h', 'k' },
   { 'j', 'h' },
@@ -14,7 +19,6 @@ local common_keymaps = {
 local insert_mode_keymaps = {}
 
 local normal_mode_keymaps = {
-
   -- navigate windows
   { '<c-h>', '<c-w>k' },
   { '<c-j>', '<c-w>h' },
@@ -24,6 +28,10 @@ local normal_mode_keymaps = {
   -- move text up and down
   { '<a-h>', ':m .-2<cr>==' },
   { '<a-k>', ':m .+1<cr>==' },
+
+  -- insert a new line without entering insert mode
+  { '<bs>', ':i<cr><cr>.<cr><down>' },
+  { '<cr>', ':a<cr><cr>.<cr><up>' },
 }
 
 local operator_mode_keymaps = {}

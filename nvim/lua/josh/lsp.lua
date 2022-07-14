@@ -1,22 +1,25 @@
 local illuminate = require('illuminate')
 local lspinstaller = require('nvim-lsp-installer')
 
-lspinstaller.setup()
+lspinstaller.setup({})
 
 local lspconfig = require('lspconfig')
 
 vim.diagnostic.config({
+  float = {
+    border = 'rounded',
+  },
   severity_sort = true,
   update_in_insert = true,
   virtual_text = false,
 })
 
 local keymaps = {
-  K = vim.lsp.buf.hover,
+  ['$'] = vim.lsp.buf.hover,
   Rn = vim.lsp.buf.rename,
+  gC = vim.lsp.buf.code_action,
   gD = vim.lsp.buf.declaration,
   gK = vim.lsp.buf.signture_help,
-  gC = vim.lsp.buf.code_action,
   gd = vim.lsp.buf.definition,
   gr = vim.lsp.buf.references,
   gy = vim.lsp.buf.type_definition,
