@@ -15,7 +15,7 @@ vim.diagnostic.config({
 })
 
 local keymaps = {
-  ['$'] = vim.lsp.buf.hover,
+  K = vim.lsp.buf.hover,
   Rn = vim.lsp.buf.rename,
   gC = vim.lsp.buf.code_action,
   gD = vim.lsp.buf.declaration,

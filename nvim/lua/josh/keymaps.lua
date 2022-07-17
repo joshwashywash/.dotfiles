@@ -2,14 +2,9 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 local common_keymaps = {
-  { '$', 'K' },
-  { 'J', '^' },
-  { 'K', 'L' },
-  { 'L', '$' },
   { 'U', '<c-r>' },
   { 'Y', 'y$' },
   { '\'', '`' },
-  { '^', 'J' },
   { '`', '\'' },
   { 'h', 'k' },
   { 'j', 'h' },
